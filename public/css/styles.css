@@ -491,6 +491,10 @@ a:hover { color: var(--cc-green-bright); }
 @media (max-width: 620px) {
   .species-grid, .reviews-grid { grid-template-columns: 1fr; }
   .trips-grid { grid-template-columns: minmax(0, 380px); }
+  /* Hero buttons side-by-side on mobile to fill the space */
+  .hero-actions { flex-wrap: nowrap; gap: 10px; }
+  .hero-actions .btn { flex: 1 1 0; min-width: 0; padding: 14px 10px; font-size: 15px; letter-spacing: .5px; white-space: nowrap; }
+  .hero-actions .btn svg { display: none; }
   .reviews-grid > :nth-child(3) { grid-column: auto; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .stat:nth-child(2) { border-right: 0; }
