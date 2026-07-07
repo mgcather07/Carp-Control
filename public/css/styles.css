@@ -230,7 +230,7 @@ a:hover { color: var(--cc-green-bright); }
 .section-species { background: linear-gradient(180deg, var(--cc-panel) 0%, var(--app-bg) 100%); }
 
 /* ---------- Trips ---------- */
-.trips-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 44px; }
+.trips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 380px)); justify-content: center; gap: 20px; margin-top: 44px; }
 .trip-card {
   position: relative; background: var(--cc-panel-2); border: 1px solid var(--hairline-soft);
   border-radius: var(--r-xl); padding: 28px; display: flex; flex-direction: column;
@@ -460,7 +460,7 @@ a:hover { color: var(--cc-green-bright); }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
-  .trips-grid, .species-grid, .reviews-grid { grid-template-columns: 1fr 1fr; }
+  .species-grid, .reviews-grid { grid-template-columns: 1fr 1fr; }
   .reviews-grid > :nth-child(3) { grid-column: 1 / -1; }
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
 }
@@ -489,7 +489,8 @@ a:hover { color: var(--cc-green-bright); }
   .section { padding: 72px 0; }
 }
 @media (max-width: 620px) {
-  .trips-grid, .species-grid, .reviews-grid { grid-template-columns: 1fr; }
+  .species-grid, .reviews-grid { grid-template-columns: 1fr; }
+  .trips-grid { grid-template-columns: minmax(0, 380px); }
   .reviews-grid > :nth-child(3) { grid-column: auto; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .stat:nth-child(2) { border-right: 0; }

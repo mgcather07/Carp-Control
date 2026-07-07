@@ -40,13 +40,12 @@ function toArray(val) {
 const FALLBACK_TRIPS = [
   {
     order: 1,
-    name: "4-Hour Night Charter",
+    name: "4-Hour Charter",
     meta: "≈ 4 hours on the water",
     price: "$150",
     priceUnit: "/ per person",
     note: "3-person minimum · $450",
-    desc: "A perfect intro run. We hit the shallows under the lights and put you on fish fast.",
-    features: ["All gear provided", "Great for first-timers", "Up to 3 shooters included"],
+    features: ["All gear provided", "Great for first-timers", "Each additional hour $100"],
     cta: "Book This Trip",
     featured: false
   },
@@ -61,18 +60,6 @@ const FALLBACK_TRIPS = [
     features: ["Everything in the 4-hour charter", "Extend the night, hour by hour", "Prime late-night bite window"],
     cta: "Book This Trip",
     featured: true
-  },
-  {
-    order: 3,
-    name: "Big Group / Custom",
-    meta: "Built around your crew",
-    price: "Let's Talk",
-    priceUnit: "",
-    note: "Corporate, bachelor, birthdays",
-    desc: "Chasing a specific species, bringing a big group, or planning something special? We'll build the charter around you.",
-    features: ["Custom itinerary", "Larger groups welcome", "Species on request"],
-    cta: "Get in Touch",
-    featured: false
   }
 ];
 
