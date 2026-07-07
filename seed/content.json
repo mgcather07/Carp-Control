@@ -1,39 +1,45 @@
 {
   "contact": {
-    "phone": "(000) 000-0000",
-    "email": "booking@example.com",
-    "area": "[Your service area — e.g. Lake Name / Region]"
+    "phone": "(270) 871-3938",
+    "email": "carpcontrolbowfishingcharters@gmail.com",
+    "area": "Eddyville, Kentucky"
   },
   "trips": {
-    "half": {
+    "fourhour": {
       "order": 1,
-      "name": "Half-Night Charter",
+      "name": "4-Hour Night Charter",
       "meta": "≈ 4 hours on the water",
-      "price": "$—",
-      "priceNote": "up to 3 shooters",
+      "price": "$150",
+      "priceUnit": "/ per person",
+      "note": "3-person minimum · $450",
       "desc": "A perfect intro run. We hit the shallows under the lights and put you on fish fast.",
-      "featured": false,
-      "features": ["All gear provided", "Great for first-timers", "Up to 3 shooters"]
+      "features": ["All gear provided", "Great for first-timers", "Up to 3 shooters included"],
+      "cta": "Book This Trip",
+      "featured": false
     },
-    "full": {
+    "fullnight": {
       "order": 2,
       "name": "Full-Night Charter",
-      "meta": "≈ 6–7 hours on the water",
-      "price": "$—",
-      "priceNote": "up to 4 shooters",
-      "desc": "Our most popular trip. More time, more water, more shots — the complete bowfishing experience.",
-      "featured": true,
-      "features": ["All gear provided", "Prime hours on the water", "Up to 4 shooters", "Most popular"]
+      "meta": "Add hours to the 4-hour run",
+      "price": "+$100",
+      "priceUnit": "/ per extra hour",
+      "note": "Stack hours for prime shooting",
+      "desc": "Our most popular way to run it. More time, more water, more shots — the complete bowfishing experience.",
+      "features": ["Everything in the 4-hour charter", "Extend the night, hour by hour", "Prime late-night bite window"],
+      "cta": "Book This Trip",
+      "featured": true
     },
     "custom": {
       "order": 3,
-      "name": "Trophy / Custom Trip",
+      "name": "Big Group / Custom",
       "meta": "Built around your crew",
-      "price": "$—",
-      "priceNote": "let's talk",
-      "desc": "Chasing a specific species, bringing a big group, or planning something special? We'll build it.",
-      "featured": false,
-      "features": ["Custom itinerary", "Larger groups welcome", "Species on request"]
+      "price": "Let's Talk",
+      "priceUnit": "",
+      "note": "Corporate, bachelor, birthdays",
+      "desc": "Chasing a specific species, bringing a big group, or planning something special? We'll build the charter around you.",
+      "features": ["Custom itinerary", "Larger groups welcome", "Species on request"],
+      "cta": "Get in Touch",
+      "featured": false
     }
   },
   "gallery": {
@@ -41,7 +47,6 @@
     "p2": { "placeholder": true },
     "p3": { "placeholder": true },
     "p4": { "placeholder": true },
-    "p5": { "placeholder": true },
-    "p6": { "placeholder": true }
+    "p5": { "placeholder": true }
   }
 }

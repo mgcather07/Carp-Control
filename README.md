@@ -1,8 +1,13 @@
 # Carp Control Bowfishing Charters
 
 Marketing website for **Carp Control Bowfishing Charters** — guided night bowfishing
-trips. Static site hosted on **Firebase Hosting** with editable content and a
-trip-request form powered by **Firebase Realtime Database (RTDB)**.
+trips with **Capt. Justin Cook** out of **Eddyville, Kentucky**. Static site hosted on
+**Firebase Hosting** with editable content and a trip-request form powered by
+**Firebase Realtime Database (RTDB)**.
+
+Dark "instrument-panel-at-night" theme with a toxic-lime accent, built to the
+Claude Design handoff. Sections: hero, stats, trips & pricing, species, how it works,
+about, gallery, testimonials, FAQ, contact.
 
 **Live:** https://carp-control.web.app
 
@@ -35,8 +40,9 @@ or re-seed from the CLI:
 firebase database:set /content seed/content.json
 ```
 
-**Replace these placeholders** before going public: phone, email, service area
-(`/content/contact`) and the `$—` trip prices (`/content/trips`).
+Contact details and pricing are real (Capt. Justin Cook, (270) 871-3938, Eddyville KY;
+$150/person, 3-person $450 minimum, +$100/extra hour). The **gallery** still needs real
+photos — see below.
 
 ### Adding gallery photos
 Upload images somewhere public (e.g. Firebase Storage) and set entries under
