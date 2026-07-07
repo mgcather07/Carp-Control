@@ -1,0 +1,47 @@
+{
+  "contact": {
+    "phone": "(000) 000-0000",
+    "email": "booking@example.com",
+    "area": "[Your service area — e.g. Lake Name / Region]"
+  },
+  "trips": {
+    "half": {
+      "order": 1,
+      "name": "Half-Night Charter",
+      "meta": "≈ 4 hours on the water",
+      "price": "$—",
+      "priceNote": "up to 3 shooters",
+      "desc": "A perfect intro run. We hit the shallows under the lights and put you on fish fast.",
+      "featured": false,
+      "features": ["All gear provided", "Great for first-timers", "Up to 3 shooters"]
+    },
+    "full": {
+      "order": 2,
+      "name": "Full-Night Charter",
+      "meta": "≈ 6–7 hours on the water",
+      "price": "$—",
+      "priceNote": "up to 4 shooters",
+      "desc": "Our most popular trip. More time, more water, more shots — the complete bowfishing experience.",
+      "featured": true,
+      "features": ["All gear provided", "Prime hours on the water", "Up to 4 shooters", "Most popular"]
+    },
+    "custom": {
+      "order": 3,
+      "name": "Trophy / Custom Trip",
+      "meta": "Built around your crew",
+      "price": "$—",
+      "priceNote": "let's talk",
+      "desc": "Chasing a specific species, bringing a big group, or planning something special? We'll build it.",
+      "featured": false,
+      "features": ["Custom itinerary", "Larger groups welcome", "Species on request"]
+    }
+  },
+  "gallery": {
+    "p1": { "placeholder": true },
+    "p2": { "placeholder": true },
+    "p3": { "placeholder": true },
+    "p4": { "placeholder": true },
+    "p5": { "placeholder": true },
+    "p6": { "placeholder": true }
+  }
+}

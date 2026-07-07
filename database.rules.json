@@ -1,0 +1,23 @@
+{
+  "rules": {
+    "content": {
+      ".read": true,
+      ".write": false
+    },
+    "messages": {
+      ".read": false,
+      "$msgId": {
+        ".write": "!data.exists() && newData.exists()",
+        ".validate": "newData.hasChildren(['name', 'message', 'createdAt'])",
+        "name":      { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 100" },
+        "email":     { ".validate": "newData.isString() && newData.val().length <= 200" },
+        "phone":     { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "tripDate":  { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "partySize": { ".validate": "newData.isString() && newData.val().length <= 20" },
+        "message":   { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 2000" },
+        "createdAt": { ".validate": "newData.isNumber()" },
+        "$other":    { ".validate": false }
+      }
+    }
+  }
+}
