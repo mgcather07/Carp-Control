@@ -12,6 +12,14 @@ import { firebaseConfig } from "./firebase-config.js";
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
+// Always land at the top on load/refresh — disable the browser's scroll
+// restoration and strip any leftover #section hash that would jump the page.
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+window.addEventListener("load", () => {
+  if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+  window.scrollTo(0, 0);
+});
+
 // ---------- Small helpers ----------
 const $ = (sel, root = document) => root.querySelector(sel);
 const el = (tag, props = {}, ...kids) => {
