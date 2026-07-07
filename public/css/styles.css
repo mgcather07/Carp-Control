@@ -419,15 +419,19 @@ a:hover { color: var(--cc-green-bright); }
   padding: 32px; box-shadow: var(--shadow-card);
 }
 .contact-form h3 { font-family: var(--font-display); text-transform: uppercase; font-size: 30px; letter-spacing: .5px; margin: 0 0 22px; color: #fff; }
-.field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+.field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; min-width: 0; }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
 .field-row .field { margin-bottom: 0; }
 .field label { font-family: var(--font-cond); text-transform: uppercase; letter-spacing: .8px; font-size: 13px; color: var(--text-2); }
 .field input, .field select, .field textarea {
   background: var(--surface-inset); border: 1px solid var(--hairline); border-radius: var(--r-md);
-  padding: 13px 14px; color: #fff; font-size: 16px; font-family: var(--font-body); outline: none; width: 100%;
+  padding: 13px 14px; color: #fff; font-size: 16px; font-family: var(--font-body); outline: none;
+  width: 100%; min-width: 0; max-width: 100%; box-sizing: border-box;
   transition: border .15s var(--ease), box-shadow .15s var(--ease); color-scheme: dark;
 }
+/* iOS Safari gives date inputs an intrinsic width that ignores width:100% and
+   overflows the field — reset the native appearance so it sizes to the box. */
+.field input[type="date"] { -webkit-appearance: none; appearance: none; }
 .field textarea { resize: vertical; }
 .field input::placeholder, .field textarea::placeholder { color: var(--text-3); }
 .field input:focus, .field select:focus, .field textarea:focus {
