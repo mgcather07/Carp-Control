@@ -120,10 +120,13 @@ function renderTrips(trips) {
 // ============================================================
 //  GALLERY
 // ============================================================
+let galleryPhotos = [];   // photos with a url, in display order (for the lightbox)
+
 function renderGallery(items) {
   const grid = $("#gallery-grid");
   if (!grid) return;
   grid.innerHTML = "";
+  galleryPhotos = [];
   items.forEach((item) => {
     if (item.placeholder || !item.url) {
       const ph = el("div", { className: "gallery-item gallery-ph", title: "Add a photo" });
@@ -131,7 +134,17 @@ function renderGallery(items) {
       grid.append(ph);
       return;
     }
-    const fig = el("figure", { className: "gallery-item" });
+    const idx = galleryPhotos.length;
+    galleryPhotos.push({ url: item.url, caption: item.caption ? esc(item.caption) : "" });
+
+    const fig = el("figure", {
+      className: "gallery-item gallery-clickable",
+      tabIndex: 0,
+      role: "button",
+      title: "Click to enlarge"
+    });
+    fig.setAttribute("aria-label", item.caption ? esc(item.caption) : "Enlarge photo");
+    fig.dataset.idx = String(idx);
     fig.append(el("img", {
       src: item.url,
       alt: item.caption ? esc(item.caption) : "Bowfishing trip photo",
@@ -256,6 +269,98 @@ document.addEventListener("click", (e) => {
     if (toggle) toggle.setAttribute("aria-expanded", "false");
   }
 });
+
+// ============================================================
+//  Gallery lightbox (click a photo to enlarge)
+// ============================================================
+const lightbox = (() => {
+  let currentIdx = 0;
+  let lastFocused = null;
+
+  // Build the overlay once and reuse it.
+  const overlay = el("div", { className: "lightbox", id: "lightbox" });
+  overlay.setAttribute("role", "dialog");
+  overlay.setAttribute("aria-modal", "true");
+  overlay.setAttribute("aria-label", "Photo viewer");
+  overlay.innerHTML = `
+    <button class="lb-close" aria-label="Close">&times;</button>
+    <button class="lb-nav lb-prev" aria-label="Previous photo">&#8249;</button>
+    <figure class="lb-figure">
+      <img class="lb-img" alt="" />
+      <figcaption class="lb-caption"></figcaption>
+    </figure>
+    <button class="lb-nav lb-next" aria-label="Next photo">&#8250;</button>
+    <span class="lb-counter"></span>`;
+  document.body.append(overlay);
+
+  const imgEl = $(".lb-img", overlay);
+  const capEl = $(".lb-caption", overlay);
+  const counterEl = $(".lb-counter", overlay);
+  const prevBtn = $(".lb-prev", overlay);
+  const nextBtn = $(".lb-next", overlay);
+  const closeBtn = $(".lb-close", overlay);
+
+  function show(idx) {
+    if (!galleryPhotos.length) return;
+    currentIdx = (idx + galleryPhotos.length) % galleryPhotos.length;
+    const photo = galleryPhotos[currentIdx];
+    imgEl.src = photo.url;
+    imgEl.alt = photo.caption || "Bowfishing trip photo";
+    capEl.textContent = photo.caption || "";
+    capEl.style.display = photo.caption ? "" : "none";
+    counterEl.textContent = `${currentIdx + 1} / ${galleryPhotos.length}`;
+    const multi = galleryPhotos.length > 1;
+    prevBtn.style.display = nextBtn.style.display = multi ? "" : "none";
+  }
+
+  function open(idx) {
+    lastFocused = document.activeElement;
+    show(idx);
+    overlay.classList.add("open");
+    document.body.style.overflow = "hidden";
+    closeBtn.focus();
+  }
+
+  function close() {
+    overlay.classList.remove("open");
+    document.body.style.overflow = "";
+    imgEl.src = "";
+    if (lastFocused && lastFocused.focus) lastFocused.focus();
+  }
+
+  const next = () => show(currentIdx + 1);
+  const prev = () => show(currentIdx - 1);
+
+  closeBtn.addEventListener("click", close);
+  nextBtn.addEventListener("click", next);
+  prevBtn.addEventListener("click", prev);
+  // Click on the backdrop (not the image or a button) closes.
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay || e.target.classList.contains("lb-figure")) close();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (!overlay.classList.contains("open")) return;
+    if (e.key === "Escape") close();
+    else if (e.key === "ArrowRight") next();
+    else if (e.key === "ArrowLeft") prev();
+  });
+
+  return { open };
+})();
+
+// Open the lightbox when a gallery photo is clicked or activated via keyboard.
+const galleryGrid = $("#gallery-grid");
+if (galleryGrid) {
+  galleryGrid.addEventListener("click", (e) => {
+    const fig = e.target.closest(".gallery-clickable");
+    if (fig) lightbox.open(Number(fig.dataset.idx));
+  });
+  galleryGrid.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    const fig = e.target.closest(".gallery-clickable");
+    if (fig) { e.preventDefault(); lightbox.open(Number(fig.dataset.idx)); }
+  });
+}
 
 // ============================================================
 //  Mobile nav
