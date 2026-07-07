@@ -51,13 +51,13 @@ const FALLBACK_TRIPS = [
   },
   {
     order: 2,
-    name: "Full-Night Charter",
-    meta: "Add hours to the 4-hour run",
-    price: "+$100",
-    priceUnit: "/ per extra hour",
-    note: "Stack hours for prime shooting",
+    name: "7-Hour Charter",
+    meta: "≈ 7 hours on the water",
+    price: "$225",
+    priceUnit: "/ per person",
+    note: "3-person minimum · $675",
     desc: "Our most popular way to run it. More time, more water, more shots — the complete bowfishing experience.",
-    features: ["Everything in the 4-hour charter", "Extend the night, hour by hour", "Prime late-night bite window"],
+    features: ["All gear provided", "Extended hours for more fun"],
     cta: "Book This Trip",
     featured: true
   }
