@@ -43,10 +43,12 @@
     }
   },
   "gallery": {
-    "p1": { "placeholder": true },
-    "p2": { "placeholder": true },
-    "p3": { "placeholder": true },
-    "p4": { "placeholder": true },
-    "p5": { "placeholder": true }
+    "p1": { "url": "/img/gallery/g1.jpg" },
+    "p2": { "url": "/img/gallery/g2.jpg" },
+    "p3": { "url": "/img/gallery/g3.jpg" },
+    "p4": { "url": "/img/gallery/g4.jpg" },
+    "p5": { "url": "/img/gallery/g5.jpg" },
+    "p6": { "url": "/img/gallery/g6.jpg" },
+    "p7": { "url": "/img/gallery/g7.jpg" }
   }
 }

@@ -67,3 +67,6 @@ node_modules/
 
 # dataconnect generated files
 .dataconnect
+
+# Raw gallery drop-off (originals processed into public/img/gallery/)
+gallery-incoming/
