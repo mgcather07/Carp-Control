@@ -262,7 +262,7 @@ a:hover { color: var(--cc-green-bright); }
 .fineprint { color: var(--gray); font-size: 14px; margin-top: 22px; text-align: center; }
 
 /* ---------- Species ---------- */
-.species-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 44px; }
+.species-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 44px; }
 .species-card { background: var(--cc-panel-2); border: 1px solid var(--hairline-soft); border-radius: var(--r-xl); overflow: hidden; }
 .species-media {
   height: 150px; display: flex; align-items: center; justify-content: center;
