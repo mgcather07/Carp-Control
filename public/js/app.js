@@ -377,6 +377,16 @@ if (galleryGrid) {
   });
 }
 
+// Mobile marquee — press and hold to pause (view a photo); release to resume scrolling.
+const marquee = $("#gallery-marquee");
+const marqueeTrack = $("#gallery-track");
+if (marquee && marqueeTrack) {
+  const pause = () => { marqueeTrack.style.animationPlayState = "paused"; };
+  const resume = () => { marqueeTrack.style.animationPlayState = "running"; };
+  ["pointerdown", "touchstart"].forEach((ev) => marquee.addEventListener(ev, pause, { passive: true }));
+  ["pointerup", "pointercancel", "pointerleave", "touchend", "touchcancel"].forEach((ev) => marquee.addEventListener(ev, resume));
+}
+
 // ============================================================
 //  Mobile nav
 // ============================================================
