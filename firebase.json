@@ -10,6 +10,13 @@
       "**/node_modules/**"
     ],
     "cleanUrls": true,
+    "redirects": [
+      {
+        "source": "/favicon.ico",
+        "destination": "/img/favicon-32.png",
+        "type": 302
+      }
+    ],
     "headers": [
       {
         "source": "**/*.@(jpg|jpeg|gif|png|webp|svg|woff2)",
