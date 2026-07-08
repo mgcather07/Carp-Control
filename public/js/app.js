@@ -232,10 +232,11 @@ if (form) {
     }
 
     const name = form.name.value.trim();
+    const phone = form.phone.value.trim();
     const message = form.message.value.trim();
-    if (!name || !message) {
+    if (!name || !phone || !message) {
       status.className = "form-status err";
-      status.textContent = "Please add your name and a short message.";
+      status.textContent = "Please add your name, phone number, and a short message.";
       return;
     }
 

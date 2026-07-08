@@ -449,7 +449,9 @@ a:hover { color: var(--cc-green-bright); }
 }
 /* iOS Safari gives date inputs an intrinsic width that ignores width:100% and
    overflows the field — reset the native appearance so it sizes to the box. */
-.field input[type="date"] { -webkit-appearance: none; appearance: none; }
+.field input[type="date"] { -webkit-appearance: none; appearance: none; min-height: 49px; }
+.field input[type="date"]::-webkit-date-and-time-value { text-align: left; margin: 0; }
+.field input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); opacity: .5; cursor: pointer; }
 /* Reset the native select so it uses the same padding/height as the inputs,
    with a custom lime chevron. */
 .field select {
