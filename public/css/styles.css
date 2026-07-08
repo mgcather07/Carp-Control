@@ -568,7 +568,9 @@ a:hover { color: var(--cc-green-bright); }
     width: 210px; height: 280px; flex: 0 0 auto; object-fit: cover; cursor: zoom-in;
     border-radius: var(--r-lg); border: 1px solid var(--hairline-soft);
   }
-  .footer-bottom-inner { flex-direction: column; }
+  .footer-top { flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 22px; }
+  .footer-nav { justify-content: center; }
+  .footer-bottom-inner { flex-direction: column; align-items: center; text-align: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
