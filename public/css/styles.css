@@ -563,7 +563,7 @@ a:hover { color: var(--cc-green-bright); }
     animation: gallery-scroll 32s linear infinite; will-change: transform;
   }
   .marquee-img {
-    width: 210px; height: 280px; flex: 0 0 auto; object-fit: cover;
+    width: 210px; height: 280px; flex: 0 0 auto; object-fit: cover; cursor: zoom-in;
     border-radius: var(--r-lg); border: 1px solid var(--hairline-soft);
   }
   .footer-bottom-inner { flex-direction: column; }

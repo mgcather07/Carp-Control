@@ -154,15 +154,19 @@ function renderGallery(items) {
   const track = $("#gallery-track");
   if (track) {
     track.innerHTML = "";
-    const marqueePhotos = galleryPhotos.filter((p) => !p.url.includes("/gallery/g5.jpg"));
-    if (marqueePhotos.length) {
-      const buildSet = () => marqueePhotos.forEach((p) => {
-        track.append(el("img", {
+    const hasMarquee = galleryPhotos.some((p) => !p.url.includes("/gallery/g5.jpg"));
+    if (hasMarquee) {
+      // Keep each photo's index into galleryPhotos so a tap opens the right lightbox slide.
+      const buildSet = () => galleryPhotos.forEach((p, idx) => {
+        if (p.url.includes("/gallery/g5.jpg")) return;
+        const img = el("img", {
           className: "marquee-img",
           src: p.url,
           alt: p.caption || "Bowfishing trip photo",
           loading: "lazy"
-        }));
+        });
+        img.dataset.idx = String(idx);
+        track.append(img);
       });
       buildSet();
       buildSet();
@@ -377,14 +381,13 @@ if (galleryGrid) {
   });
 }
 
-// Mobile marquee — press and hold to pause (view a photo); release to resume scrolling.
+// Mobile marquee — tap a photo to open it full-screen in the lightbox.
 const marquee = $("#gallery-marquee");
-const marqueeTrack = $("#gallery-track");
-if (marquee && marqueeTrack) {
-  const pause = () => { marqueeTrack.style.animationPlayState = "paused"; };
-  const resume = () => { marqueeTrack.style.animationPlayState = "running"; };
-  ["pointerdown", "touchstart"].forEach((ev) => marquee.addEventListener(ev, pause, { passive: true }));
-  ["pointerup", "pointercancel", "pointerleave", "touchend", "touchcancel"].forEach((ev) => marquee.addEventListener(ev, resume));
+if (marquee) {
+  marquee.addEventListener("click", (e) => {
+    const img = e.target.closest(".marquee-img");
+    if (img && img.dataset.idx != null) lightbox.open(Number(img.dataset.idx));
+  });
 }
 
 // ============================================================
