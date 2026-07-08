@@ -341,28 +341,9 @@ a:hover { color: var(--cc-green-bright); }
   55%  { opacity: 1; }
   100% { transform: translateY(0); opacity: 1; }
 }
-@keyframes logo-float {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(5px); }
-}
 @keyframes logo-glow {
   0%, 100% { filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .6)) drop-shadow(0 0 5px rgba(255, 255, 255, .3)); }
   50%      { filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .6)) drop-shadow(0 0 20px rgba(255, 255, 255, .85)); }
-}
-@keyframes cc-ripple {
-  0%   { transform: scale(.25); opacity: 0; }
-  12%  { opacity: .85; }
-  100% { transform: scale(1.7); opacity: 0; }
-}
-@keyframes cc-water-glow {
-  0%, 100% { opacity: .45; transform: scale(1); }
-  50%      { opacity: .85; transform: scale(1.08); }
-}
-@keyframes cc-splash {
-  0%   { transform: translate(0, 0) scale(.2); opacity: 0; }
-  8%   { opacity: 1; }
-  45%  { transform: translate(var(--x), var(--y)) scale(1); opacity: .95; }
-  100% { transform: translate(calc(var(--x) * 1.1), 34px) scale(.15); opacity: 0; }
 }
 .gallery-clickable { cursor: zoom-in; }
 .gallery-clickable:focus-visible { outline: 2px solid var(--cc-green); outline-offset: 3px; }
@@ -525,30 +506,7 @@ a:hover { color: var(--cc-green-bright); }
   .hero-logo {
     display: inline-block; width: min(76%, 300px); height: auto; position: relative; z-index: 1;
     filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .6));
-    animation: logo-drop 1.1s cubic-bezier(.3, 1.35, .5, 1), logo-float 4.5s ease-in-out 1.2s infinite, logo-glow 4.5s ease-in-out 1.2s infinite;
-  }
-  .logo-water { position: absolute; left: 50%; bottom: 10px; width: 0; height: 0; z-index: 0; }
-  .logo-water::before {
-    content: ""; position: absolute; left: -125px; top: -34px; width: 250px; height: 68px;
-    border-radius: 50%; filter: blur(7px);
-    background: radial-gradient(ellipse at center, rgba(173, 219, 60, .5), rgba(255, 255, 255, .18) 42%, transparent 72%);
-    animation: cc-water-glow 3.6s ease-in-out .9s infinite;
-  }
-  .ripple {
-    position: absolute; left: -100px; top: -27px; width: 200px; height: 54px;
-    border-radius: 50%; border: 2px solid rgba(141, 198, 63, .7); opacity: 0; transform: scale(.25);
-    animation: cc-ripple 3.6s ease-out infinite;
-  }
-  .ripple:nth-child(1) { animation-delay: .9s; }
-  .ripple:nth-child(2) { animation-delay: 2.1s; border-color: rgba(255, 255, 255, .6); }
-  .ripple:nth-child(3) { animation-delay: 3.3s; border-color: rgba(173, 219, 60, .55); }
-  /* Splash — droplets spray up & out from the base */
-  .logo-splash { position: absolute; left: 50%; bottom: 26px; width: 0; height: 0; z-index: 3; }
-  .drop {
-    position: absolute; left: 0; top: 0; border-radius: 50%; opacity: 0;
-    background: radial-gradient(circle at 35% 30%, #fff, rgba(222, 255, 205, .85));
-    box-shadow: 0 0 7px rgba(255, 255, 255, .8);
-    animation: cc-splash 2.6s ease-out infinite;
+    animation: logo-drop 1.1s cubic-bezier(.3, 1.35, .5, 1), logo-glow 4.5s ease-in-out 1.2s infinite;
   }
   /* Catchy tagline on the left, hamburger on the right */
   .header-tagline {
