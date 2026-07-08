@@ -244,8 +244,8 @@ if (form) {
 
     const payload = {
       name,
-      email: form.email.value.trim(),
-      phone: form.phone.value.trim(),
+      phone,
+      contactMethod: form.contactMethod.value.trim(),
       tripDate: form.tripDate.value.trim(),
       partySize: form.partySize.value.trim(),
       message,

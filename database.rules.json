@@ -12,6 +12,7 @@
         "name":      { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 100" },
         "email":     { ".validate": "newData.isString() && newData.val().length <= 200" },
         "phone":     { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "contactMethod": { ".validate": "newData.isString() && newData.val().length <= 40" },
         "tripDate":  { ".validate": "newData.isString() && newData.val().length <= 40" },
         "partySize": { ".validate": "newData.isString() && newData.val().length <= 20" },
         "message":   { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 2000" },

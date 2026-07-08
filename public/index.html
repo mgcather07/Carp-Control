@@ -358,12 +358,17 @@
           </div>
           <div class="field-row">
             <div class="field">
-              <label for="cf-email">Email</label>
-              <input id="cf-email" name="email" type="email" maxlength="200" autocomplete="email" />
-            </div>
-            <div class="field">
               <label for="cf-phone">Phone *</label>
               <input id="cf-phone" name="phone" type="tel" required maxlength="40" autocomplete="tel" />
+            </div>
+            <div class="field">
+              <label for="cf-contact">Best way to reach you</label>
+              <select id="cf-contact" name="contactMethod">
+                <option value="">Select…</option>
+                <option>Call</option>
+                <option>Text</option>
+                <option>Either</option>
+              </select>
             </div>
           </div>
           <div class="field-row">
@@ -416,6 +421,6 @@
     </div>
   </footer>
 
-  <script type="module" src="/js/app.js?v=9"></script>
+  <script type="module" src="/js/app.js?v=10"></script>
 </body>
 </html>
