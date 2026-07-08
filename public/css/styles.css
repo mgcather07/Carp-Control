@@ -118,6 +118,7 @@ a:hover { color: var(--cc-green-bright); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 10px; min-height: 64px; }
 .brand { display: flex; align-items: center; flex-shrink: 0; }
 .brand-logo { height: 52px; width: auto; filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .5)); }
+.header-tagline { display: none; }   /* mobile only — fills the space where the logo was */
 .main-nav {
   display: flex; align-items: center; gap: 30px;
   font-family: var(--font-cond); font-weight: 600; font-size: 15px; letter-spacing: .6px; text-transform: uppercase;
@@ -486,7 +487,14 @@ a:hover { color: var(--cc-green-bright); }
   .main-nav .nav-cta { margin-top: 14px; border-bottom: 0; text-align: center; }
   .nav-toggle { display: flex; }
   /* Move the logo into the hero (big) and drop it from the header on mobile */
-  .brand-logo { display: none; }
+  .brand { display: none; }
+  /* Catchy tagline on the left, hamburger on the right */
+  .header-tagline {
+    display: flex; flex-direction: column; line-height: .9;
+    font-family: var(--font-display); text-transform: uppercase; letter-spacing: .5px;
+  }
+  .header-tagline .ht-1 { color: var(--cc-green); font-size: 17px; }
+  .header-tagline .ht-2 { color: #fff; font-size: 17px; }
   .hero-logo {
     display: block; width: min(76%, 300px); height: auto; margin: 0 auto 24px;
     filter: drop-shadow(0 4px 16px rgba(0, 0, 0, .55));
