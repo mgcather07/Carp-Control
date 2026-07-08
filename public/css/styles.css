@@ -203,6 +203,7 @@ a:hover { color: var(--cc-green-bright); }
 .section-captain { background: linear-gradient(90deg, rgba(72, 113, 28, .10), rgba(16, 21, 15, 0) 55%), var(--cc-panel); }
 .captain-grid { display: grid; grid-template-columns: 1fr 1.08fr; gap: 56px; align-items: center; }
 .captain-media { position: relative; }
+.captain-boat { display: none; }   /* mobile only — shown above the captain photo */
 .captain-frame { background: var(--chrome); padding: 4px; border-radius: calc(var(--r-xl) + 4px); box-shadow: var(--shadow-card); }
 .captain-photo { border-radius: var(--r-xl); overflow: hidden; aspect-ratio: 4 / 3; background: #0c0f0a; }
 .captain-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
@@ -497,6 +498,12 @@ a:hover { color: var(--cc-green-bright); }
   #expect { display: none; }
   .main-nav a[href="#expect"], .footer-nav a[href="#expect"] { display: none; }
   .captain-grid { grid-template-columns: 1fr; gap: 44px; }
+  /* Boat photo sits above the captain photo on mobile, and is dropped from the gallery */
+  .captain-boat {
+    display: block; width: 100%; height: auto; margin-bottom: 20px;
+    border-radius: var(--r-lg); border: 1px solid var(--hairline-soft);
+  }
+  .gallery-grid > .gallery-item:nth-child(5) { display: none; }
   .section { padding: 72px 0; }
 }
 @media (max-width: 620px) {
