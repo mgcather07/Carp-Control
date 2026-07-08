@@ -44,7 +44,7 @@ const FALLBACK_TRIPS = [
     meta: "≈ 4 hours on the water",
     price: "$150",
     priceUnit: "/ per person",
-    note: "2-person minimum · priced for 3 ($450)",
+    note: "$450 trip minimum",
     features: ["All gear provided", "Great for first-timers", "Each additional hour $100"],
     cta: "Book This Trip",
     featured: false
@@ -55,7 +55,7 @@ const FALLBACK_TRIPS = [
     meta: "≈ 7 hours on the water",
     price: "$225",
     priceUnit: "/ per person",
-    note: "2-person minimum · priced for 3 ($675)",
+    note: "$675 trip minimum",
     desc: "Our most popular way to run it. More time, more water, more shots — the complete bowfishing experience.",
     features: ["All gear provided", "Extended hours for more fun"],
     cta: "Book This Trip",
