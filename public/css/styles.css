@@ -514,9 +514,10 @@ a:hover { color: var(--cc-green-bright); }
   .hero-actions .btn { flex: 1 1 0; min-width: 0; padding: 14px 10px; font-size: 15px; letter-spacing: .5px; white-space: nowrap; }
   .hero-actions .btn svg { display: none; }
   .reviews-grid > :nth-child(3) { grid-column: auto; }
-  .stats-grid { grid-template-columns: 1fr 1fr; }
-  .stat:nth-child(2) { border-right: 0; }
-  .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--hairline-soft); }
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat { border-right: 0; border-bottom: 1px solid var(--hairline-soft); text-align: center; padding: 18px; }
+  .stat:last-child { border-bottom: 0; }
+  .stat-label { white-space: nowrap; }
   .steps { grid-template-columns: 1fr; }
   .field-row { grid-template-columns: 1fr; gap: 16px; }
   .field-row .field { margin-bottom: 0; }
