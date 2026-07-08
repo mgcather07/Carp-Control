@@ -358,6 +358,12 @@ a:hover { color: var(--cc-green-bright); }
   0%, 100% { opacity: .45; transform: scale(1); }
   50%      { opacity: .85; transform: scale(1.08); }
 }
+@keyframes cc-splash {
+  0%   { transform: translate(0, 0) scale(.2); opacity: 0; }
+  8%   { opacity: 1; }
+  45%  { transform: translate(var(--x), var(--y)) scale(1); opacity: .95; }
+  100% { transform: translate(calc(var(--x) * 1.1), 34px) scale(.15); opacity: 0; }
+}
 .gallery-clickable { cursor: zoom-in; }
 .gallery-clickable:focus-visible { outline: 2px solid var(--cc-green); outline-offset: 3px; }
 
@@ -536,6 +542,14 @@ a:hover { color: var(--cc-green-bright); }
   .ripple:nth-child(1) { animation-delay: .9s; }
   .ripple:nth-child(2) { animation-delay: 2.1s; border-color: rgba(255, 255, 255, .6); }
   .ripple:nth-child(3) { animation-delay: 3.3s; border-color: rgba(173, 219, 60, .55); }
+  /* Splash — droplets spray up & out from the base */
+  .logo-splash { position: absolute; left: 50%; bottom: 26px; width: 0; height: 0; z-index: 3; }
+  .drop {
+    position: absolute; left: 0; top: 0; border-radius: 50%; opacity: 0;
+    background: radial-gradient(circle at 35% 30%, #fff, rgba(222, 255, 205, .85));
+    box-shadow: 0 0 7px rgba(255, 255, 255, .8);
+    animation: cc-splash 2.6s ease-out infinite;
+  }
   /* Catchy tagline on the left, hamburger on the right */
   .header-tagline {
     display: flex; flex-direction: column; line-height: .9;
