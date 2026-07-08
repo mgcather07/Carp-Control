@@ -148,6 +148,26 @@ function renderGallery(items) {
     if (item.caption) fig.append(el("figcaption", {}, esc(item.caption)));
     grid.append(fig);
   });
+
+  // Mobile marquee — one row, auto-scrolling right-to-left. Duplicate the set for a
+  // seamless loop, and skip the boat (it lives in the hero on mobile).
+  const track = $("#gallery-track");
+  if (track) {
+    track.innerHTML = "";
+    const marqueePhotos = galleryPhotos.filter((p) => !p.url.includes("/gallery/g5.jpg"));
+    if (marqueePhotos.length) {
+      const buildSet = () => marqueePhotos.forEach((p) => {
+        track.append(el("img", {
+          className: "marquee-img",
+          src: p.url,
+          alt: p.caption || "Bowfishing trip photo",
+          loading: "lazy"
+        }));
+      });
+      buildSet();
+      buildSet();
+    }
+  }
 }
 
 // ============================================================

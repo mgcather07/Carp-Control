@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/styles.css?v=12" />
+  <link rel="stylesheet" href="/css/styles.css?v=13" />
 </head>
 <body id="top">
   <!-- ===================== HEADER ===================== -->
@@ -214,7 +214,9 @@
         <div class="gallery-grid" id="gallery-grid">
           <div class="loading">Loading photos…</div>
         </div>
-        <p class="gallery-hint">Swipe to see more &nbsp;→</p>
+        <div class="gallery-marquee" id="gallery-marquee" aria-hidden="true">
+          <div class="gallery-track" id="gallery-track"></div>
+        </div>
       </div>
     </section>
 
@@ -412,6 +414,6 @@
     </div>
   </footer>
 
-  <script type="module" src="/js/app.js?v=4"></script>
+  <script type="module" src="/js/app.js?v=5"></script>
 </body>
 </html>
