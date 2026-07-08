@@ -172,8 +172,37 @@ function renderGallery(items) {
       });
       buildSet();
       buildSet();
+      startMarquee();
     }
   }
+}
+
+// JS-driven marquee scroll (right-to-left). Runs even when the phone has
+// Reduce Motion enabled (which kills CSS animations), and pauses while the
+// lightbox is open so the scroll resumes right where it left off on close.
+let marqueeStarted = false;
+let marqueeOffset = 0;
+function startMarquee() {
+  if (marqueeStarted) return;
+  const track = $("#gallery-track");
+  if (!track) return;
+  marqueeStarted = true;
+  const SPEED = 40;   // px per second
+  let last = null;
+  const step = (ts) => {
+    if (last === null) last = ts;
+    const dt = Math.min((ts - last) / 1000, 0.1);   // clamp after tab-away
+    last = ts;
+    const lb = document.getElementById("lightbox");
+    const paused = lb && lb.classList.contains("open");
+    const setWidth = track.scrollWidth / 2;         // one copy of the photo set
+    if (!paused && setWidth > 0 && track.offsetParent !== null) {
+      marqueeOffset = (marqueeOffset + SPEED * dt) % setWidth;
+      track.style.transform = `translateX(${-marqueeOffset}px)`;
+    }
+    requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
 }
 
 // ============================================================

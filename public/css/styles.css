@@ -338,7 +338,6 @@ a:hover { color: var(--cc-green-bright); }
 .gallery-ph svg { width: 46px; height: 46px; }
 .gallery-hint { display: none; }
 .gallery-marquee { display: none; }   /* mobile only — auto-scrolling one-row marquee */
-@keyframes gallery-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* Mobile hero logo: drop in, then float; water ripples where it lands */
 @keyframes logo-drop {
@@ -567,7 +566,7 @@ a:hover { color: var(--cc-green-bright); }
   .gallery-marquee { display: block; overflow: hidden; margin-inline: -22px; }
   .gallery-track {
     display: flex; gap: 12px; width: max-content;
-    animation: gallery-scroll 32s linear infinite; will-change: transform;
+    will-change: transform;   /* moved by JS (see startMarquee) so it can pause for the lightbox */
   }
   .marquee-img {
     width: 210px; height: 280px; flex: 0 0 auto; object-fit: cover; cursor: zoom-in;
