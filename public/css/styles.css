@@ -345,6 +345,10 @@ a:hover { color: var(--cc-green-bright); }
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(5px); }
 }
+@keyframes logo-glow {
+  0%, 100% { filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .6)) drop-shadow(0 0 5px rgba(255, 255, 255, .3)); }
+  50%      { filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .6)) drop-shadow(0 0 20px rgba(255, 255, 255, .85)); }
+}
 @keyframes cc-ripple {
   0%   { transform: scale(.25); opacity: 0; }
   12%  { opacity: .85; }
@@ -515,7 +519,7 @@ a:hover { color: var(--cc-green-bright); }
   .hero-logo {
     display: inline-block; width: min(76%, 300px); height: auto; position: relative; z-index: 1;
     filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .6));
-    animation: logo-drop 1.1s cubic-bezier(.3, 1.35, .5, 1), logo-float 4.5s ease-in-out 1.2s infinite;
+    animation: logo-drop 1.1s cubic-bezier(.3, 1.35, .5, 1), logo-float 4.5s ease-in-out 1.2s infinite, logo-glow 4.5s ease-in-out 1.2s infinite;
   }
   .logo-water { position: absolute; left: 50%; bottom: 10px; width: 0; height: 0; z-index: 0; }
   .logo-water::before {
