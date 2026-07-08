@@ -105,8 +105,10 @@ function renderTrips(trips) {
 
       const cta = el("a", {
         className: "btn " + (t.featured ? "btn-primary" : "btn-ghost") + " trip-cta" + (t.featured ? "" : " ghost"),
-        href: "#contact"
+        href: "#contact-form"
       }, esc(t.cta || "Book This Trip"));
+      cta.dataset.tripName = esc(t.name);
+      cta.dataset.tripPrice = [esc(t.price), esc(t.priceUnit)].filter(Boolean).join(" ").trim();
       card.append(cta);
       grid.append(card);
     });
@@ -379,6 +381,21 @@ if (galleryGrid) {
     if (e.key !== "Enter" && e.key !== " ") return;
     const fig = e.target.closest(".gallery-clickable");
     if (fig) { e.preventDefault(); lightbox.open(Number(fig.dataset.idx)); }
+  });
+}
+
+// Trip cards — clicking "Book This Trip" prefills the message with that package.
+const tripsGridEl = $("#trips-grid");
+if (tripsGridEl) {
+  tripsGridEl.addEventListener("click", (e) => {
+    const cta = e.target.closest(".trip-cta");
+    if (!cta) return;
+    const name = cta.dataset.tripName;
+    const price = cta.dataset.tripPrice;
+    const msg = $("#cf-message");
+    if (name && msg) {
+      msg.value = `I'd like to book the ${name}${price ? ` (${price})` : ""}. `;
+    }
   });
 }
 
