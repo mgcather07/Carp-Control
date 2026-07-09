@@ -434,7 +434,7 @@ a:hover { color: var(--cc-green-bright); }
 .ci-label { font-family: var(--font-cond); text-transform: uppercase; letter-spacing: 1px; color: var(--gray); font-size: 12px; }
 .ci-text a, .ci-text span[data-contact] { font-size: 19px; font-weight: 600; color: #fff; }
 .ci-text a:hover { color: var(--cc-green); }
-.ci-email { font-size: 16px !important; word-break: break-all; }
+.ci-email { font-size: clamp(11px, 3.4vw, 16px) !important; white-space: nowrap; }
 
 .contact-form {
   background: var(--cc-panel-2); border: 1px solid var(--hairline); border-radius: var(--r-xl);
