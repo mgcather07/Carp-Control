@@ -212,9 +212,14 @@ function startMarquee() {
 function renderContactInfo(info) {
   if (!info) return;
   if (info.phone) {
+    const digits = info.phone.replace(/[^\d+]/g, "");
     document.querySelectorAll('[data-contact="phone"]').forEach((n) => {
       n.textContent = info.phone;
-      if (n.tagName === "A") n.setAttribute("href", "tel:" + info.phone.replace(/[^\d+]/g, ""));
+      if (n.tagName === "A") n.setAttribute("href", "tel:" + digits);
+    });
+    document.querySelectorAll('[data-contact="phone-sms"]').forEach((n) => {
+      n.textContent = info.phone;
+      if (n.tagName === "A") n.setAttribute("href", "sms:" + digits);
     });
   }
   if (info.email) {
