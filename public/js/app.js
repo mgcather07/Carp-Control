@@ -218,7 +218,7 @@ function renderContactInfo(info) {
       if (n.tagName === "A") n.setAttribute("href", "tel:" + digits);
     });
     document.querySelectorAll('[data-contact="phone-sms"]').forEach((n) => {
-      n.textContent = info.phone;
+      // keep the "Text Us" label — only refresh the sms: target
       if (n.tagName === "A") n.setAttribute("href", "sms:" + digits);
     });
   }
