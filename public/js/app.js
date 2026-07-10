@@ -117,7 +117,8 @@ function renderTrips(trips) {
 // ============================================================
 //  GALLERY
 // ============================================================
-let galleryPhotos = [];   // photos with a url, in display order (for the lightbox)
+let galleryPhotos = [];   // all photos (desktop grid + lightbox)
+let marqueePhotos = [];   // mobile scroll photos (galleryPhotos minus the boat)
 
 function renderGallery(items) {
   const grid = $("#gallery-grid");
@@ -156,18 +157,18 @@ function renderGallery(items) {
   const track = $("#gallery-track");
   if (track) {
     track.innerHTML = "";
-    const hasMarquee = galleryPhotos.some((p) => !p.url.includes("/gallery/g5.jpg"));
-    if (hasMarquee) {
-      // Keep each photo's index into galleryPhotos so a tap opens the right lightbox slide.
-      const buildSet = () => galleryPhotos.forEach((p, idx) => {
-        if (p.url.includes("/gallery/g5.jpg")) return;
+    // The mobile scroll (and its lightbox) uses the photos minus the boat.
+    marqueePhotos = galleryPhotos.filter((p) => !p.url.includes("/gallery/g5.jpg"));
+    if (marqueePhotos.length) {
+      // dataset.idx is the index into marqueePhotos so the lightbox only cycles these.
+      const buildSet = () => marqueePhotos.forEach((p, mIdx) => {
         const img = el("img", {
           className: "marquee-img",
           src: p.url,
           alt: p.caption || "Bowfishing trip photo",
           loading: "lazy"
         });
-        img.dataset.idx = String(idx);
+        img.dataset.idx = String(mIdx);
         track.append(img);
       });
       buildSet();
@@ -327,6 +328,7 @@ document.addEventListener("click", (e) => {
 const lightbox = (() => {
   let currentIdx = 0;
   let lastFocused = null;
+  let lbPhotos = [];   // the active set the viewer cycles through
 
   // Build the overlay once and reuse it.
   const overlay = el("div", { className: "lightbox", id: "lightbox" });
@@ -352,19 +354,20 @@ const lightbox = (() => {
   const closeBtn = $(".lb-close", overlay);
 
   function show(idx) {
-    if (!galleryPhotos.length) return;
-    currentIdx = (idx + galleryPhotos.length) % galleryPhotos.length;
-    const photo = galleryPhotos[currentIdx];
+    if (!lbPhotos.length) return;
+    currentIdx = (idx + lbPhotos.length) % lbPhotos.length;
+    const photo = lbPhotos[currentIdx];
     imgEl.src = photo.url;
     imgEl.alt = photo.caption || "Bowfishing trip photo";
     capEl.textContent = photo.caption || "";
     capEl.style.display = photo.caption ? "" : "none";
-    counterEl.textContent = `${currentIdx + 1} / ${galleryPhotos.length}`;
-    const multi = galleryPhotos.length > 1;
+    counterEl.textContent = `${currentIdx + 1} / ${lbPhotos.length}`;
+    const multi = lbPhotos.length > 1;
     prevBtn.style.display = nextBtn.style.display = multi ? "" : "none";
   }
 
-  function open(idx) {
+  function open(idx, photos) {
+    lbPhotos = (photos && photos.length) ? photos : galleryPhotos;
     lastFocused = document.activeElement;
     show(idx);
     overlay.classList.add("open");
@@ -433,7 +436,7 @@ const marquee = $("#gallery-marquee");
 if (marquee) {
   marquee.addEventListener("click", (e) => {
     const img = e.target.closest(".marquee-img");
-    if (img && img.dataset.idx != null) lightbox.open(Number(img.dataset.idx));
+    if (img && img.dataset.idx != null) lightbox.open(Number(img.dataset.idx), marqueePhotos);
   });
 }
 
