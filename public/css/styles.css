@@ -435,13 +435,14 @@ a:hover { color: var(--cc-green-bright); }
 .ci-text a, .ci-text span[data-contact] { font-size: 19px; font-weight: 600; color: #fff; }
 .ci-text a:hover { color: var(--cc-green); }
 .ci-email { font-size: clamp(11px, 3.4vw, 16px) !important; white-space: nowrap; }
-.ci-phone-line { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .ci-text-btn {
-  font-size: 12px !important; font-family: var(--font-cond); font-weight: 700 !important;
+  align-self: flex-start; margin-top: 10px;
+  display: inline-flex; align-items: center; gap: 7px; line-height: 1;
+  font-size: 13px !important; font-family: var(--font-cond); font-weight: 700 !important;
   text-transform: uppercase; letter-spacing: .6px; color: var(--cc-green) !important;
-  border: 1px solid rgba(141, 198, 63, .45); border-radius: var(--r-pill); padding: 4px 14px;
-  line-height: 1;
+  border: 1px solid rgba(141, 198, 63, .5); border-radius: var(--r-pill); padding: 8px 18px;
 }
+.ci-text-btn svg { flex-shrink: 0; }
 .ci-text-btn:hover { background: rgba(141, 198, 63, .12); color: var(--cc-green-bright) !important; }
 
 .contact-form {
