@@ -289,19 +289,39 @@ if (form) {
 
     submit.disabled = true;
     submit.textContent = "Sending…";
-    try {
-      const newRef = push(ref(db, "messages"));
-      await set(newRef, payload);
+
+    // Email Justin via Web3Forms (primary), and save to the database as a backup — in parallel.
+    const emailReq = fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        access_key: "7810ecb4-fc3c-467e-90af-0719d370fa2a",
+        subject: `New Trip Request — ${name}`,
+        from_name: "Carp Control Website",
+        Name: name,
+        Phone: phone,
+        "Best way to reach": payload.contactMethod || "—",
+        "Preferred date": payload.tripDate || "—",
+        "Party size": payload.partySize || "—",
+        Message: message
+      })
+    }).then((r) => r.json()).catch((err) => { console.error("Email send failed:", err); return { success: false }; });
+
+    const rtdbReq = set(push(ref(db, "messages")), payload)
+      .then(() => true)
+      .catch((err) => { console.error("Database save failed:", err); return false; });
+
+    const [emailRes, rtdbOk] = await Promise.all([emailReq, rtdbReq]);
+    submit.disabled = false;
+    submit.textContent = "Send Request";
+
+    if ((emailRes && emailRes.success) || rtdbOk) {
       status.className = "form-status ok";
       status.textContent = `Thanks, ${name.split(" ")[0]}! Your request is in — Capt. Justin will get back to you soon.`;
       form.reset();
-    } catch (err) {
-      console.error("Message submit failed:", err);
+    } else {
       status.className = "form-status err";
-      status.textContent = "Sorry, something went wrong. Please call or email us instead.";
-    } finally {
-      submit.disabled = false;
-      submit.textContent = "Send Request";
+      status.textContent = "Sorry, something went wrong. Please call or text us instead.";
     }
   });
 }
